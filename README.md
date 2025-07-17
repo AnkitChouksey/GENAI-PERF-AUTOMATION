@@ -37,11 +37,12 @@ Before using this project, ensure you have the following installed:
 - Python 3.6 or higher
 - `kubectl` CLI / Access to a Kubernetes cluster
 - Once you have the requirements.txt file, install the dependencies using pip:  pip install -r requirements.txt
+**###Ankit: Add requirements.txt in repo else please add more details about this file.**
 
 ### Configuration: `user_input.toml`
 The `user_input.toml` file is the main configuration file for this project. It contains all the necessary parameters for execution.
 Each section and field is described in detail to help users understand and modify the configuration as needed.
-
+**###Ankit: Would suggest to add 3 sections in user_input .toml 1. user_input (mandatory) 2. optional (user may change as per requirement) 3. Constants (Should not be change)**
 ##### [constants]
 Defines constant values used throughout the script.
 namespace: Kubernetes namespace for deploying resources 
@@ -60,6 +61,7 @@ Stores API keys and tokens for external services.
 	b.	Log in or create an account.
 	c.	Navigate to Settings > Access Tokens.
 	d.	Create a new token, choose scope (Read/Write), and save it.
+*****Ankit: I think we are missing something here. After getting HF access token, still we need some access on NVIDIA or HPE/PCAI related domain to use this token. I am not sure. Please check. My token doesn't work but Rajesh's does.**
 
 	a.	Go to NVIDIA NGC.
 	b.	Log in or create an account.
@@ -81,14 +83,14 @@ Configuration for pod profiles.
 2.	pattern: Pattern for pod configuration (e.g., l40s-bf16-tp1-pp1-throughput).
 3.	image: Container image to be used in the pod.
 4.	selected_model_id: ID of the model to be used. [user don’t have to change this]
-
+**###Ankit: please change selected_model_id to selected_profile_id and make this change in other files as well**
 
  ###### EXAMPLE:
 1.	pod_prefix = "list-profiles-llama-31-8b", Developer use only, same as metadata name and will be used in yaml file ./yaml/llama-3.1-8b-instruct.yaml
 2.	pattern = "l40s-bf16-tp1-pp1-throughput",  Developer use only, change as per requirement and provide similar kind of pattern as shown seperated by -
 3.	image = "10.14.75.21/ezmeral-common/nvcr.io/nim/meta/llama-3.1-8b-instruct-pb24h2:1.3.2",  Developer use only, change as per requirement
 4.	selected_model_id = "8af967d80ae8f30f4635a59b2140fdc2b38d3004e16e66c9667fa032e56497fd", it will get overwritten by script
-
+**###Ankit: please change selected_model_id to selected_profile_id**
 
  ##### [final_exec]
 Configuration for final execution and benchmarking.
